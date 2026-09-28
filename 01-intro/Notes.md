@@ -11,7 +11,9 @@
 -> the model encapsulates all the patterns from the data. it is a single artifact we can save and use later.
 -> make a prediction are post-create a model, take features of a new car that for example we wanted to sell, put on the model and it will return a price based on the features we give it (make the prediction from the learned patterns). that not mean are the exact price but, based on data, more or less.
 > *"To summarize: machine learning is a process of extracting patterns from data. The data consists of features - information about the object - and the target - what we want to predict. The output of machine learning is a model. To use it, we take the features of a new object, put them into the model, and get predictions of the target."*
+
 ---
+
 ##### 02-ml-vs-rules.md
 
 -> basicly exist a "primitive" way to clasify things, the rule-based system, like if-else statements. using the email example if the mail was sended by xxx@nig.com determines are a spam and also if include the word money and so on, if we set that in like python script, two big errors are commited, 1. the spam mails change a lot in little time, so that list of if-else statemente would change and increse faaast and 2. if a mail from my mother with the word money for something importantn JUST for the word wouls be sended to smap wheras not be an spam. how we solved that? MACHINE LEARNING, its ok start with rulebased quesions, are the base to create features to the model but the big diference are we use the output (spam or not spam) as part of the training to determines as better way how much (%) are spam or not.
@@ -19,6 +21,7 @@
 -> the predictions are probabilities, so we need a bare to deterime when do this or that with that predict.
 
 -> if the feature have 2 states, we can convert them onto binary feature, true or false. Easy (this are not here but xd) for use models like lr if the features work with.
+
 ---
 
 ##### 03-supervised_ml.md
@@ -33,6 +36,7 @@
 		-> binary classification: just two categories, the target is 0 or 1 and g output a probability between 0 and 1. 
 		-> multiclass classification: more than two categories.
 	-> ranking: return a ordered list of items responding the answer of, wich item should go first, second, third? for ex.. optimized for that. "the output is the top scores associated with corresponding items. It is applied in recommender systems."
+
 ---
 
 ##### 04-crisp-dm.md
@@ -70,7 +74,9 @@
 	1. start simple
 	2. learn from the feedback
 	3. improve
+
 ---
+
 ##### 05-model-selection.md
 -> we separate the data into 2 datasets instaed of have just 1. train and validation, the model is fitted with "train" data and it us used to predict the y values of the validation feature matrix, then the predictar y values are compared with the actual y values. but this give us a multiple comparisons problem, just by chance one model can be lucky and obtain good predictions because all of them are probabilistic, so we set thre datasets and we use this next recipe to reach the best model:
 1. split datasets in training, validation, and test, 60%, 20% and 20% respectivily for ex.
@@ -80,17 +86,43 @@
 5. apply the best one to the "test 20%" dataset
 6. compare the performance metris of validation and test
 after step 4 we can  merge the train and validation dataset, refit the model with the best one option and try on test dataset to fit a little bit better performance and not waste data. 
+
 ---
 
 ##### 06-enviroment.md
 -> this module its focused on set the enviroment to work. personally i feel more comfy using colab but, as a challengue id try to use github codespaces.
+
 ---
 
 ##### 07-numpy.md
 'np.zeros(num)' ; 'np.ones(num)' -> creates an array filled of 0's or 1's with an imput as sized of the array.
 'np.full(num, num2)' -> create an array with len num and filled of num2.
+'np.array(lst)' -> transform a list into array with the list as an argument.
+'arr[i]' access to an element of the array by index. like python, with = we can changue de value of that element in the array.
+'np.linespace(inf, sup, len)' create an array of a size len filled with numbers equal separated from inf to sup inputs.
+with 'np.zeros((rows, col))' we can also create two-dimensional arrays(matrix) with another input. wich each ones means how much rows and cols have to had the array. That nums have to be as an tuple.
+we can create a two-dimensional array like raw 'np.array([1,2,3],[4,5,6],[7,8,9])'
+To access to an element we can use index but as x-y cords, arr[0,1], 0 means row and 1 means col.and as the same that bofore, using this access element we can changue the value on that coords. if we pass only one index, return the entire row.
+we can rewrite the entire row given one index and a new list/vector to that row. to do the same in the columns we have to set ':' as a first input. 'n[:,1]
+'np.random.rand(row,col) -> give us an array with random numbers between 0 and 1 with uniform distribution.
+if before that we set the seed with 'np.random.seed(num)' we can psudorandomize the generation, those are affected by an algorithm, with that every wich have set the same seed have to have same random arr.
+with np.random.randn(x,y) we can get a random normal distribution.
+We can multiply the arrays by a int or float, this multiplate EACH element by that num , just like linear algebra.
+'np.random.randint(low=0, high=100, size=(5,2))' randint create an array just with integers.
+at the same as multiply i xplain before, we can do element-wise operations to each array, 
+As the same that mul, we can multiply and/or sum to each element of an array just using 'arr + num', 'arr * num'. EVERY ELEMENT GET MULTIPLIED OR SUMMED BY THAT NUM.
+'np.arange(num)' create an array from 0 to num with len num+1. Also we can divide, substract and everything else we want even chain ops: 'b = (10 + (a * 2)) ** 2 /100' this op is applied element by element.
+Also we can compute elemnt-wise between two arrays element by element by index, should be every op that we mentioned before.
+Comparision ops are also element-wise. compare 1 by 1 element and return a true or false to the statement. 'a > 2', 'b < a'.
+if we use 'a[a > b]' we can select the elements from a wich the statement its true. we can look at all the elements that satisfy a condition.
+Also we have the summarizing ops, instaef of element-wise (wich are one by one) those one returns just a number. Ex. 'a.min()' & 'a.max()' the min and max values; 'a.sum()' compute the sum of each element; 'a.mean()' the avg; 'a.std()' the dtandard deviation. All of those works for one and two dimensional arrays. 
+There are much more but this works as an introduction to numpy, depend or what we wanted to do are what we used, and tbh its kinda impossible to memorize all this but if we need to do something i can search on google if numpy have a way to do it instaed of think in the standart python way to do it (loops and so on), the goal of use this kind of library, for my, isnt memorize all but search and try to use their functions as many and better as possible, ex. find minimal number in each row, sort those, etc, are specific cases where better are have google close. in the folder i download a cheatcode to check if i need something.; also this two link should be usefulls.
+https://mlbookcamp.com/article/numpy
+https://github.com/alexeygrigorev/mlbookcamp-code/blob/master/appendix-c-numpy.ipynb
 
+---
 
+##### 08-
 
 
 ---
@@ -101,7 +133,7 @@ Estimated time on lecture:
 | 23.09.26 | 00.45 | 01.45  |    1      |
 | 24.09.26 | 00.00 | 02.00  |    2      |
 | 24.09.26 | 12.45 | 13.30  |   0.75    |
-| 28.09.26 | xx.xx | xx.xx  |    x      |
+| 28.09.26 | 07.45 | xx.xx  |    x      |
 
 
 
