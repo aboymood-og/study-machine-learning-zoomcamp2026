@@ -122,7 +122,33 @@ https://github.com/alexeygrigorev/mlbookcamp-code/blob/master/appendix-c-numpy.i
 
 ---
 
-##### 08-
+##### 08-linear-algebra.md
+This chapter will be a remember of linear algebra with Seastian Sea, la wea buena xd.
+
+-> Vector operations
+we have mul vector by a number (scalar), were we multiply each element of the vector by that number. 
+Also we can sum two vectors, where each element in the same coord have sum, returning a sum of thos vectors.
+-> Multiplication
+	-> Vector-vector (dot product): this is not mul from NumPy ( a * b ), this return a value, not lst neither arr. How? multiply each value in the same coord and then sume all until n, n as the dimension of the vector.. 'u = [2,4,5,6] ; v = [1,0,0,2] ; u·v = 2·1 + 4·0 + 5·0 + 6·2 = 2 + 12 = 14' -> we use '.dot(vector)' from np to do it. The vectors have to have the same size. shape is the size of the array.
+	-> Matrix-vector: with matrix U and vector v; for each row of the matrix U, we do a dot product mul with v, where each result for row are the value of the return vector Uv, so the return have to have each dot product between U[i] and v, the result is k dot products one per row, the columns of U and vector v must have the same number of elements, if no its not posible to do it. We are interested in the number of columns of U - remember, the number of columns in U is the dimensionality of each row of U, and it should match the number of elements in v. The number of rows of U is the dimensionality of the resulting vector: there are k rows in the matrix, so the result of the multiplication has k elements. We initialize it with zeros and then, for each row, compute the dot product with v and put it into the result. we can use the .dot notation to multiply 'U.dot(v)'
+	-> Matrix-matrix: we have matrixs U and V. We take the V and breaks into multiple columns, then for each column of V we multiply the entire matrix U by this column, doing matrix-vector mul being the result become the columns of the matrix. so is represeted as a bunch of matrix-vector multipliations and the result must have the number of rows coming from U and the number of columns coming from V. we have to have the same num of rows of U and columns of V, if not, we cant mul those matrix. 'U.dot(V)'
+On each of these multiplications, with numpy we can use the .dot to multiply them, the framework know what have to do depend on what we give to them. instaed of use each def by hand, .dot decide for us what have to do it and make it efficiently
+-> Identity matrix (I), its a square matrix where on the diagonal have ones and zeros everywhere else:
+1 0 0 0 0
+0 1 0 0 0
+0 0 1 0 0
+0 0 0 1 0
+0 0 0 0 1
+when we multiply I with any other matrix, we get that matrix back again ( the matrix have to match dimensional way ) its like multiply by one 1. usamos la funcion np.eye(num) to create identity matrix with num as a dimensional square.
+-> Inverse: inverse of matrix A are A⁻¹. is a matrix such that when we multiply by A we get I. 'A \dot A⁻¹ = I'. Just square matrixs have inverse. 'np.linalg.inv(matrix)' we can create that inverse. for more of this, search here; https://github.com/MemoonaTahira/MLZoomcamp2022/blob/main/Notes/Week_1-intro_to_ML_linear_algebra/Notes_for_Chapter_1-Linear_Algebra.ipynb
+
+---
+
+##### 09-pandas.md
+
+
+I've read this chapter but im short of time to do the homework so i do that first and then fill this with my notes.
+
 
 
 ---
@@ -133,8 +159,8 @@ Estimated time on lecture:
 | 23.09.26 | 00.45 | 01.45  |    1      |
 | 24.09.26 | 00.00 | 02.00  |    2      |
 | 24.09.26 | 12.45 | 13.30  |   0.75    |
-| 28.09.26 | 07.45 | xx.xx  |    x      |
+| 28.09.26 | 07.45 | 09.45  |    2      |
+| 28.09.26 | 10.30 | 12.10  |   1.70    |
+| 28.09.26 | 18.50 | 19.50  |    1      |
 
-
-
-| xx.xx.xx | xx.xx | xx.xx  |    x      |
+Total: 8,45 hrs
