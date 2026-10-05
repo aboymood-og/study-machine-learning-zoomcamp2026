@@ -10,6 +10,7 @@
 -> target: what we want to predict using the features.
 -> the model encapsulates all the patterns from the data. it is a single artifact we can save and use later.
 -> make a prediction are post-create a model, take features of a new car that for example we wanted to sell, put on the model and it will return a price based on the features we give it (make the prediction from the learned patterns). that not mean are the exact price but, based on data, more or less.
+
 > *"To summarize: machine learning is a process of extracting patterns from data. The data consists of features - information about the object - and the target - what we want to predict. The output of machine learning is a model. To use it, we take the features of a new object, put them into the model, and get predictions of the target."*
 
 ---
@@ -25,6 +26,7 @@
 ---
 
 ##### 03-supervised_ml.md
+
 -> in supervised model we show all the features to reach the target, for that reason are supervised. show examples that what are spam or not for example based on features or this car with these features have this price. we teach it by showing examples.
 -> feature matrix (X) where the rows are observations (ex. one row per email) and columns are the features.
 -> target variable (y) it is a vector where for each row of X it contains the answer (ex. 1 if spam, 0 if not). For each row of X theres a value in y.
@@ -40,61 +42,66 @@
 ---
 
 ##### 04-crisp-dm.md
+
 -> crisp dm is a mthodology wich describes the entire process from understanding the problem to deployment.
 
 ![The CRISP-DM process diagram](https://github.com/DataTalksClub/machine-learning-zoomcamp/raw/main/01-intro/images/04-crisp-dm-02-process-diagram-imagegen-pilot.jpg)
 
 1. business understanding: 
-	-> define a mesurable goal for a problem to solve. KPI is clave, otherwise how do we lated say erather the project was successful?
-	-> undestand the impact of the project.
-	-> do we need ml? maybe rule-based system should work, try to not use more than the project need.
+   -> define a mesurable goal for a problem to solve. KPI is clave, otherwise how do we lated say erather the project was successful?
+   -> undestand the impact of the project.
+   -> do we need ml? maybe rule-based system should work, try to not use more than the project need.
 2. data understanding:
-	-> do we have the data? is it good?
-	-> analyze data sources and decide if more data is required.
-	-> understand from where the data came and how it was taken. (does this data source really work?)
-	-> is this data reliable? maybe are errors on the sampling so a manual check should be good.
-	-> is the data large enough?
-	-> in this step we can learn more about the business so we can go back to the step 1 and clarify some things.
+   -> do we have the data? is it good?
+   -> analyze data sources and decide if more data is required.
+   -> understand from where the data came and how it was taken. (does this data source really work?)
+   -> is this data reliable? maybe are errors on the sampling so a manual check should be good.
+   -> is the data large enough?
+   -> in this step we can learn more about the business so we can go back to the step 1 and clarify some things.
 3. data preparation: 
-	-> transform data into a table so we can put into ml model.
-	-> clean data, remove noise, appply pipelines.
-	-> the output of this step should be X and y from previous lesson.
+   -> transform data into a table so we can put into ml model.
+   -> clean data, remove noise, appply pipelines.
+   -> the output of this step should be X and y from previous lesson.
 4. modeling: 
-	-> to select the best model, use the validation set.
-	->train various ml modles and choose the best one, based on results of this step decide if it is required to add new features or fix data issues.
+   -> to select the best model, use the validation set.
+   ->train various ml modles and choose the best one, based on results of this step decide if it is required to add new features or fix data issues.
 5. evaluation:
-	-> validate that the goal is reached.
-	-> solves the business problem determined in step 1?
-	-> have we reached the goal? did out metrics improve? if we reduced spam by 30% instaed of 50%, is 30% good enough? maube the proyect are not achievable? iterate.
+   -> validate that the goal is reached.
+   -> solves the business problem determined in step 1?
+   -> have we reached the goal? did out metrics improve? if we reduced spam by 30% instaed of 50%, is 30% good enough? maube the proyect are not achievable? iterate.
 6. deployment:
-	-> roll out to production to all the users.
-	-> lately evaluation and deployment happen together (online evaluation, first 5% of users and if it works to all the rest)
-	-> ITERATE: 
-	-> do something very simple on the first iteration, quickly move thourgh all the spets, evaluate, deploy, learn from the procees, then go back to step 1 and make the model a bit more complex, two or three silly iterations like this dont waste a lot of time and should quickly what your working on is useful.
-	1. start simple
-	2. learn from the feedback
-	3. improve
+   -> roll out to production to all the users.
+   -> lately evaluation and deployment happen together (online evaluation, first 5% of users and if it works to all the rest)
+   -> ITERATE: 
+   -> do something very simple on the first iteration, quickly move thourgh all the spets, evaluate, deploy, learn from the procees, then go back to step 1 and make the model a bit more complex, two or three silly iterations like this dont waste a lot of time and should quickly what your working on is useful.
+   1. start simple
+   2. learn from the feedback
+   3. improve
 
 ---
 
 ##### 05-model-selection.md
+
 -> we separate the data into 2 datasets instaed of have just 1. train and validation, the model is fitted with "train" data and it us used to predict the y values of the validation feature matrix, then the predictar y values are compared with the actual y values. but this give us a multiple comparisons problem, just by chance one model can be lucky and obtain good predictions because all of them are probabilistic, so we set thre datasets and we use this next recipe to reach the best model:
+
 1. split datasets in training, validation, and test, 60%, 20% and 20% respectivily for ex.
 2. train the models with "train 60%"
 3. evaluate the models with "validation 20%"
 4. select the best model
 5. apply the best one to the "test 20%" dataset
 6. compare the performance metris of validation and test
-after step 4 we can  merge the train and validation dataset, refit the model with the best one option and try on test dataset to fit a little bit better performance and not waste data. 
+   after step 4 we can  merge the train and validation dataset, refit the model with the best one option and try on test dataset to fit a little bit better performance and not waste data. 
 
 ---
 
 ##### 06-enviroment.md
+
 -> this module its focused on set the enviroment to work. personally i feel more comfy using colab but, as a challengue id try to use github codespaces.
 
 ---
 
 ##### 07-numpy.md
+
 'np.zeros(num)' ; 'np.ones(num)' -> creates an array filled of 0's or 1's with an imput as sized of the array.
 'np.full(num, num2)' -> create an array with len num and filled of num2.
 'np.array(lst)' -> transform a list into array with the list as an argument.
@@ -123,6 +130,7 @@ https://github.com/alexeygrigorev/mlbookcamp-code/blob/master/appendix-c-numpy.i
 ---
 
 ##### 08-linear-algebra.md
+
 This chapter will be a remember of linear algebra with Seastian Sea, la wea buena xd.
 
 -> Vector operations
@@ -146,21 +154,49 @@ when we multiply I with any other matrix, we get that matrix back again ( the ma
 
 ##### 09-pandas.md
 
+-> we use dataframe in pandas, its basically a table.
+-> with pd.DataFrame() and given the correct inputs we can create a dataframe, normally called df.
+-> we can give a list with the name of cololumns and use columns = name of list but exist different ways to create a df, another one is with dictionaries where isnt necesary give the columns = argument bc are the keys on each dic, but for me thats kind of slow bc we repeat a lot of code. bettter with list of list.
+-> first thing to do with every dataframe are df.head(), with that command we can check the first rows of a dataset. Do it with every df, from csv to sql query.
+-> each column of a df is a series, so a df is a table and the table are multiple series. for pandas ofc.
+-> to access to one columns we use df['name-of-series']. we can acces to difernt col at the same time, put in it inside of a list: df[['col1', 'col2', 'col3']]. we can add a new column using the same notation, df['id] = [1,2,3,4,5] for ex. to delete it we use del df['id'].
+-> the index are the num at the left of a df. those are the ids of the rows.  with df.Index show us the step and how much rows we have basicly. these index number works basicly as an identifier of rows. we can change those values with df.index = [list of each new "value" to those index], if we change we cant acces to them with numbs using loc but yes with iloc.
+-> with df.loc[index] we can acces to a row as indes = number of row to access. if index change their values and we dont know how their are called, we use df.iloc[index] and index still works.
+-> with df = df.reset_index(drop=True) we reset the index name to numbers. that not chague the df, create a new one overwritting the exist one.
+-> like in NumPy we have element-wise operations, df[''] * 2 and return a df with that column multiply by 2 and the NaN returs as the same. we can do the same to divde, and every element wise op we do in NumPy but operating with pandas series, nor NumPy arrays. under hood pandas use numpy haha xd. we can compare too using ops > < =, returning a bool value of all df.
+-> we can filtering the df using a "double" df[df[col] op><= number], and so on, returnig a new df wich contains only the rows that we want we can filter by condition of numbers or search for ex a brand of cars using ==. To combine two or more we use & logical op like df[(df[col] == something) & df[col2] <= number].
+-> we also have string ops, those dont exist on numpy bc are focus on processing numbers, while in pandas we will do it. we can set all on a column of string to lowercase using df[col].str.lower() (similar to nativaly on python). we can replace spaces with uderscore or, anything with the replace method df[col].str.replace(' ', '_'), where first argument means what we wanna change and second for what we will changue that, those ops DO NOT MODIFY THE DF, return a new series with modifications. to replace we can merge them using .str as many time we want and using the df = to be replaced ex: df[col] = df[col].str.replace(' ', '__').str.lower(). with df = we overwrite the df.
+-> also have summarizing ops like in numpy. df.mean();max(); and we also have df.describe() or df.col.describe() to have a resume of the series with descriptive statistics like count, mean, std, min, percentils, max, name of series and type of that. using .round after one of those we can redondear the return to a number of decimals. ith categorical variable we use .nunique() to know how many uniques values have on that col or in the entire df.
+-> with isnull and sum() we can check how many NaN or missing values have the df.
+-> we can grouping using groupby, similar to SQL querys.if we have;
+SELECT
+	transmission_type, 
+	AVG(MSRP)
+FROM
+	cars
+GROUP BY
+	transmission_type;
+means what is the average price for each type of transmission. for that we groups by transmission type and withing each group we campute the average. in pandas we use df.groupby(), ex: df.groupby('Transmission Type').MSRP.mean() or weva sumarize op we want to group by.
+-> all in pandas in the back are numpy. to acces to a series pandas using numpy we use .values df.MSRP.values and retunr an array like in numpy.
+-> if we want to conert df to dict we can use .to_dict() given as argument orient='records'.
 
-I've read this chapter but im short of time to do the homework so i do that first and then fill this with my notes.
+https://www.datacamp.com/cheat-sheet/pandas-cheat-sheet-for-data-science-in-python
+
+
 
 
 
 ---
+
 Estimated time on lecture: 
 
 | DAY      | START | FINISH | TOTAL(hr) |
 | -------- | ----- | ------ | --------- |
-| 23.09.26 | 00.45 | 01.45  |    1      |
-| 24.09.26 | 00.00 | 02.00  |    2      |
-| 24.09.26 | 12.45 | 13.30  |   0.75    |
-| 28.09.26 | 07.45 | 09.45  |    2      |
-| 28.09.26 | 10.30 | 12.10  |   1.70    |
-| 28.09.26 | 18.50 | 19.50  |    1      |
+| 23.09.26 | 00.45 | 01.45  | 1         |
+| 24.09.26 | 00.00 | 02.00  | 2         |
+| 24.09.26 | 12.45 | 13.30  | 0.75      |
+| 28.09.26 | 07.45 | 09.45  | 2         |
+| 28.09.26 | 10.30 | 12.10  | 1.70      |
+| 28.09.26 | 18.50 | 19.50  | 1         |
 
 Total: 8,45 hrs
